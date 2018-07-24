@@ -1,0 +1,77 @@
+﻿<!-- <div >
+        <nav class='navbar navbar-default' >
+            <div class='container-fluid' >
+                <ul class='nav navbar-nav' style="position: absolute; top: 50px; right: 0px">
+                    <li ><a [routerLink]="['/admin']">Admin</a></li>
+                </ul>
+            </div>
+        </nav>
+     </div> -->
+
+<div class="row"  style="position: relative; left: 10px; padding-top: 5%">
+    <h4>Hello {{currentUser.firstName | titlecase}}!</h4>
+    <a [routerLink]="['/login']" class="btn btn-link">Logout</a>  
+</div>
+<div>
+    <p>You're logged in to Mphasis AMS portal!!</p>
+</div>
+<div>
+    <ams-calendar></ams-calendar> 
+</div>
+
+<!-- <form [formGroup]="amsForm" (ngSubmit)="onSubmit()">
+    <table>
+        <tr>
+            <td>
+                <label for="billdays" style="width: 200px;;height: 30px;">Number of billable days:</label>
+            </td>
+            <td>
+                <input type="text" formControlName="billdays" style="width: 100px;height: 30px;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.billdays.errors }" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="leaveradio" style="width: 200px;;height: 30px;">Did you take any leave?</label>
+            </td>
+            <td>
+                <input type="radio" formControlName="leavedays" name="leavedays" checked value="Yes" />
+                <input type="radio" formControlName="leavedays" name="leavedays" value="No" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="leavedays" style="width: 200px;;height: 30px;">Number of Leave Days:</label>
+            </td>
+            <td>
+                <input type="text" formControlName="leavedays" style="width: 100px;height: 30px;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.leavedays.errors }" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="overtime" style="width: 200px;;height: 30px;">Overtime Hours:</label>
+            </td>
+            <td>
+                <input type="text" formControlName="billdays" style="width: 100px;height: 30px;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.overtime.errors }" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td style="padding-bottom: 5%; padding-top: 5%">
+                <button [disabled]="loading" class="btn btn-primary">Submit</button>
+                <a [routerLink]="['/login']" class="btn btn-link">Logout</a>
+            </td>
+            <td>       
+            </td>
+        </tr>
+    </table>
+</form> -->
+
+<!--<h3>All registered users:</h3>
+ <ul>
+    <li *ngFor="let user of users">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>
+</ul> -->
+

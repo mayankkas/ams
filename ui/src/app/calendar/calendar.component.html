@@ -1,0 +1,145 @@
+<!-- 
+<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+
+<hr/>
+
+<button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
+<button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
+<button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>
+
+<hr/>
+<pre>Month:{{ date.month }}.{{ date.year }}</pre>
+<pre>Selected Date: {{ model | json }}</pre> -->
+
+<div class="row">
+  <div style="position: relative; left: 10px">
+    <ngb-datepicker #d1 [(ngModel)]="calModel" #c1="ngModel" (navigate)="date = $event.next" (ngModelChange)="datechange($event)"></ngb-datepicker>
+
+    <hr/>
+    <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
+    <button class="btn btn-sm btn-outline-primary" (click)="d1.navigateTo()">Current Month</button>
+    <hr/>
+    <pre>Month:{{ date.month }}.{{ date.year }}</pre>
+    <pre>Date Selected: {{ calModel | date:'MMMM-dd-yyyy' }}</pre>
+    <!-- <pre>State: {{ c1.status }}</pre> -->
+  </div>
+  <div style="position: relative; left: 20px">
+    <!-- <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <label for="billdays" style="width: 200px;;height: 30px;">Number of billable days:</label>
+            <div class="input-group-append">
+                <input type="text" formControlName="billdays" style="width: 100px;height: 30px;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.billdays.errors }" />
+            </div>
+          </div>
+        </div>
+      </form> -->
+      <form [formGroup]="amsForm" (ngSubmit)="onSubmit()">
+        <table>
+            <tr>
+                <td>
+                    <label for="billdays" style="width: 130px;;height: 30px;">{{calModel | date:'MMM' }} billable days:</label>
+                </td>
+                <!-- <td>
+                    <input type="text" formControlName="billdays" style="width: 100px;height: 30px;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.billdays.errors }" />
+                </td> *ngIf="f.billdays.value > 0" -->
+                <td>
+                    <label for="billdays" style="width: 110px;;height: 30px;">{{billdays - f.leavedays.value}} Days</label>
+                </td>
+                <td>
+                    <label for="billdays" style="width: 110px;;height: 30px;">{{(billdays - f.leavedays.value) * 8}} Hours</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="leaveradio" style="width: 130px;;height: 30px;">Leaves?</label>
+                </td>
+                <td>
+                    <input type="radio" formControlName="leaveradio" name="leaveradio" value="Yes" />
+                    Yes 
+                    <input type="radio" formControlName="leaveradio" name="leaveradio" value="No" [checked]='true'/>
+                    No
+                </td>
+            </tr>
+            <tr *ngIf="f.leaveradio.value==='Yes'">
+                <td>
+                    <label for="leavedays" style="width: 130px;;height: 30px;">Leave Days:</label>
+                </td>
+                <td>
+                    <input type="text" formControlName="leavedays" [value]=0 style="width: 100px;height: 30px;"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.leavedays.errors }" />
+                </td>
+                <td>
+                    <label *ngIf="f.leavedays.value > 0" for="leavedays" style="width: 100px;;height: 30px;">  {{f.leavedays.value * 8}} Hours</label>
+                </td>
+            </tr>
+            <tr>
+              <td>
+                  <label for="overtimeradio" style="width: 130px;;height: 30px;">Overtime?</label>
+              </td>
+              <td>
+                  <input type="radio" formControlName="overtimeradio" name="overtimeradio" value="Yes"/>
+                  Yes 
+                  <input type="radio" formControlName="overtimeradio" name="overtimeradio" value="No" [checked]='true'/>
+                  No
+              </td>
+          </tr>
+            <tr *ngIf="f.overtimeradio.value==='Yes'">
+                <td>
+                    <label for="overtime" style="width: 130px;;height: 30px;">Overtime Hours:</label>
+                </td>
+                <td>
+                    <input type="text" formControlName="overtime" [value]=0 (ngModelChange)="overtimechange($event)" style="width: 100px;height: 30px;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.overtime.errors }" />
+                </td>
+                <td>
+                   Hours
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="totalhours" style="width: 130px;;height: 30px;">Total Clarity:</label>
+                </td>
+                <td>
+                    ({{billdays}} - {{f.leavedays.value===''?0:f.leavedays.value}}) Days
+                </td>
+                <td>
+                    {{overtimeHours+(billdays-f.leavedays.value)*8}} Hours
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td style="padding-bottom: 5%; padding-top: 5%">
+                    <button [disabled]="loading" class="btn btn-primary">Submit</button>
+                </td>
+                <td>    
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+  <!-- <div class="col-6">
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="d2" #c2="ngModel" [(ngModel)]="model2" ngbDatepicker #d2="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">
+              <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <hr/>
+    <button class="btn btn-sm btn-outline-primary" (click)="model2 = today">Select Today</button>
+    <hr/>
+
+
+    <pre>Model: {{ model2 | json }}</pre>
+    <pre>State: {{ c2.status }}</pre>
+  </div> -->
+
+</div>

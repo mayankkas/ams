@@ -10,7 +10,7 @@ import org.springframework.data.cassandra.core.mapping.Table;
 public class Employee {
 
 	@PrimaryKey
-	private BigInteger eid;
+	private int eid;
 
 	private String firstName;
 
@@ -23,7 +23,7 @@ public class Employee {
 	public Employee() {
 	}
 
-	public Employee(BigInteger eid, String firstName, String lastName, String emailId, String password) {
+	public Employee(int eid, String firstName, String lastName, String emailId, String password) {
 		this.eid = eid;
 		this.firstName = firstName;
 		this.lastName = lastName;

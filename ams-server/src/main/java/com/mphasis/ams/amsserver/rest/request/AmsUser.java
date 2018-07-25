@@ -5,7 +5,7 @@ import java.math.BigInteger;
 
 public class AmsUser {
 
-	private BigInteger eid;
+	private int eid;
 
 	private String firstName;
 
@@ -15,11 +15,11 @@ public class AmsUser {
 	
 	private String password;
 
-	public BigInteger getEid() {
+	public int getEid() {
 		return eid;
 	}
 
-	public void setEid(BigInteger eid) {
+	public void setEid(int eid) {
 		this.eid = eid;
 	}
 

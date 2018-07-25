@@ -9,7 +9,7 @@ import org.springframework.data.cassandra.repository.CassandraRepository;
 
 import com.mphasis.ams.amsserver.cassandra.entity.Employee;
 
-public interface EmployeeRepository extends CassandraRepository<Employee, BigInteger>//CrudRepository<Customer, String> 
+public interface EmployeeRepository extends CassandraRepository<Employee, Integer>//CrudRepository<Customer, String> 
 {
 //	Employee findByEid(BigInteger eid);
 

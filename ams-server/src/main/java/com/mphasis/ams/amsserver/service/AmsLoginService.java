@@ -1,7 +1,5 @@
 package com.mphasis.ams.amsserver.service;
 
-import java.math.BigInteger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,22 +18,31 @@ public class AmsLoginService {
 	@Autowired
 	private EmployeeRepository empRepo;
 
-	public Employee addEmployee(BigInteger eid, String firstName, String lastName, String emailId, String password) {
+	public Employee addEmployee(int eid, String firstName, String lastName, String emailId, String password) {
 
-		if (this.empRepo.findById(eid) == null) {
+		if (this.empRepo.findById(eid).orElse(null) == null) {
 			Employee emp = new Employee(eid, firstName, lastName, emailId, password);
 			return this.empRepo.save(emp);
 		}
 		return null;
 	}
 	
-	public void deleteEmployee(BigInteger eid) {
+	public void deleteEmployee(int eid) {
 
 		Employee emp = this.empRepo.findById(eid).orElse(null);
 		System.out.println(emp);
 		if(emp!=null)
 			this.empRepo.delete(emp);
 		System.out.println(this.empRepo.findById(eid).orElse(null));
+	}
+	
+	public String testEmployee(){
+		System.out.println("testEmployee");
+		StringBuilder b = new StringBuilder();
+		this.empRepo.findAll().forEach(employee -> {
+			b.append(employee.toString()+"\n");
+		});
+		return b.toString();
 	}
 
 	public void testDataRepo() {

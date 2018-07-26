@@ -9,4 +9,5 @@ nodejs (npm)
 >> Build Application
 
 npm install
+
 npm start

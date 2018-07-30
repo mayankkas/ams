@@ -2,3 +2,4 @@
 *.class
 *.tgz
 ams-client/package-lock.json
+ams-server/bin/main/application.properties

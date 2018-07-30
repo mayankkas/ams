@@ -1,3 +1,4 @@
 
 *.class
 *.tgz
+ams-client/package-lock.json

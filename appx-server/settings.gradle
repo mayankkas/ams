@@ -1,4 +1,0 @@
-rootProject.name = 'ams-server'
-
-include 'login'
-include 'ams'

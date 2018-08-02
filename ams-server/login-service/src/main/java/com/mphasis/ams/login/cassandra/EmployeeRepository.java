@@ -1,6 +1,5 @@
 package com.mphasis.ams.login.cassandra;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.data.cassandra.repository.CassandraRepository;
@@ -9,7 +8,7 @@ import org.springframework.data.cassandra.repository.CassandraRepository;
 
 import com.mphasis.ams.login.cassandra.entity.Employee;
 
-public interface EmployeeRepository extends CassandraRepository<Employee, Integer>//CrudRepository<Customer, String> 
+public interface EmployeeRepository extends CassandraRepository<Employee, Integer>
 {
 //	Employee findByEid(BigInteger eid);
 

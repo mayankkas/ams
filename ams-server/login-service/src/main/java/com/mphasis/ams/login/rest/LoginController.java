@@ -19,30 +19,28 @@ public class LoginController {
 	
 	@GetMapping("/")
 	public String get(){
-		return loginService.testEmployee();
+		return loginService.listEmployee();
 	}
 	
 	@GetMapping("/add/{id}")
 	public String add(@PathVariable("id") int id){
 		
-		String firstName = "firstname";
-		String lastName = "lastname";
+		String role = "admin";
 		String emailId = "name@mphasis.com";
 		String password = "password";
 		
-		return "Added User: "+loginService.addEmployee(id, firstName, lastName, emailId, password);
+		return "Added User: "+loginService.addEmployee(id, emailId, role, password);
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") int id){
-//		BigInteger eid = BigInteger.valueOf(2346557);
 		loginService.deleteEmployee(id);
 		return "Deleted User";
 	}
 	
 	@PostMapping("/adduser")
 	public String addUser(@RequestBody LoginUser user){
-		return "Added User: "+loginService.addEmployee(user.getEid(), user.getFirstName(), user.getLastName(), user.getEmailId(), user.getPassword());
+		return "Added User: "+loginService.addEmployee(user.getEid(), user.getEmailId(), user.getRole(), user.getPassword());
 	}
 	
 	@DeleteMapping("/deleteuser")

@@ -24,11 +24,11 @@ jar at location: \build\libs
 
 CREATE KEYSPACE amskeyspace WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 
-CREATE TABLE amskeyspace.employee (eid varint PRIMARY KEY, firstname text, lastname text, emailid text, password text);
+CREATE TABLE amskeyspace.employee (eid varint PRIMARY KEY, emailid text, role text, password text);
 
-CREATE INDEX fistnameindex ON amskeyspace.employee (firstname);
+CREATE INDEX emailidindex ON amskeyspace.employee (emailid);
 
-CREATE INDEX lastnameindex ON amskeyspace.employee (lastname);
+CREATE INDEX roleindex ON amskeyspace.employee (role);
 
 DROP TABLE amskeyspace.employee;
 

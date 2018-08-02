@@ -20,7 +20,8 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(`${config.apiUrl}/users/` + user.id, user);
+        console.log("update:"+user)
+        return this.http.put(`${config.apiUrl}/users/` + user.username, user);
     }
 
     delete(id: number) {

@@ -1,4 +1,5 @@
-﻿<h2 style="padding-top: 20%">Forgot Password</h2>
+﻿<div>
+<h2 style="width: 400px;">Register/Forgot Password</h2>
 <form [formGroup]="forgotForm" (ngSubmit)="onSubmit()">
     <table>
         <tr>
@@ -31,12 +32,65 @@
         </tr>
         <tr>
             <td>
+                <label for="otpradio" style="width: 140px;;height: 30px;">Already have OTP?</label>
+            </td>
+            <td>
+                <input type="radio" formControlName="otpradio" name="otpradio" value="Yes"  (change)="otpradioChangeHandler($event)"/>
+                Yes 
+                <input type="radio" formControlName="otpradio" name="otpradio" value="No" [checked]='true' (change)="otpradioChangeHandler($event)"/>
+                No
+            </td>
+        </tr>
+        <tr *ngIf="f.otpradio.value==='Yes'">
+            <td>
+                <label for="otpValue" style="width: 130px;;height: 30px;">OTP:</label>
+            </td>
+            <td>
+                <input type="password" formControlName="otpValue" style="width: 150px;height: 30px;"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.otpValue.errors }" />
+            </td>
+            <td>
+                <div *ngIf="submitted && f.otpValue.errors" >
+                   <div *ngIf="f.otpValue.errors.pattern" style="width: 200px;height: 30px; color: crimson; font-size: 70%">Invalid OPT</div>
+                </div>
+            </td>
+        </tr>
+        <tr *ngIf="f.otpradio.value==='Yes'">
+            <td>
+                <label for="newpassword" style="width: 130px;;height: 30px;">New Password:</label>
+            </td>
+            <td>
+                <input type="password" formControlName="newpassword" style="width: 150px;height: 30px;"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.newpassword.errors }" />
+            </td>
+            <td>
+                <div *ngIf="submitted && f.newpassword.errors" >
+                   <div *ngIf="f.newpassword.errors.pattern" style="width: 200px;height: 30px; color: crimson; font-size: 70%">Invalid Password</div>
+                </div>
+            </td>
+        </tr>
+        <tr *ngIf="f.otpradio.value==='Yes'">
+            <td>
+                <label for="confirmpassword" style="width: 140px;;height: 30px;">Confirm Password:</label>
+            </td>
+            <td>
+                <input type="password" formControlName="confirmpassword" style="width: 150px;height: 30px;"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
+            </td>
+            <td>
+                <div *ngIf="submitted && f.confirmpassword.errors" >
+                   <div *ngIf="f.confirmpassword.errors.pattern" style="width: 200px;height: 30px; color: crimson; font-size: 70%">Invalid Password</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
             </td>
             <td style="padding-bottom: 5%; padding-top: 5%">
-                <button [disabled]="loading" class="btn btn-primary">Submit</button>
-                <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+                <!-- here: {{"f.otpradio.value==='Yes'"}} -->
+                <button [disabled]="loading" style="font-size: 14px" class="btn btn-primary">{{otpRadioValue==='Yes'?'Reset':'SendOTP'}}</button>
+                <!-- <button [disabled]="loading" class="btn btn-primary">SendOPT</button> -->
+                <a [routerLink]="['/login']" class="btn btn-link" style="font-size: 14px">Cancel</a>
             </td>
-            <td>       
+            <td>
+                       
             </td>
         </tr>
     </table>
@@ -75,3 +129,4 @@
         <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
     </div>  -->
 </form>
+</div>

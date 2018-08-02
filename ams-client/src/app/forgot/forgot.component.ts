@@ -10,6 +10,7 @@ export class ForgotComponent implements OnInit {
     forgotForm: FormGroup;
     loading = false;
     submitted = false;
+    otpRadioValue: string='No';
 
     constructor(
         private formBuilder: FormBuilder,
@@ -20,7 +21,11 @@ export class ForgotComponent implements OnInit {
     ngOnInit() {
         this.forgotForm = this.formBuilder.group({
             username: ['', [Validators.required,Validators.pattern('[0-9]{7}')]],
-            email: ['', [Validators.required,Validators.email]]
+            email: ['', [Validators.required,Validators.email]],
+            otpradio: ['', Validators.required],
+            otpValue: ['', Validators.pattern('[0-9]{6}')],
+            newpassword: ['', Validators.pattern('^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$')],
+            confirmpassword: ['', Validators.pattern('^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$')]
         });
     }
 
@@ -36,16 +41,22 @@ export class ForgotComponent implements OnInit {
         }
 
         this.loading = true;
-        this.userService.register(this.forgotForm.value)
+        this.userService.update(this.forgotForm.value)
             .pipe(first())
             .subscribe(
                 data => {
                     this.alertService.success('Password sent to your Email Id', true);
-                    this.router.navigate(['/login']);
+                    // this.router.navigate(['/forgot']);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
     }
+
+    //event handler for the radio button's change event
+    otpradioChangeHandler(event: any) {
+    //update the ui
+    this.otpRadioValue = event.target.value;
+  }
 }

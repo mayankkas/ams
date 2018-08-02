@@ -1,31 +1,31 @@
-﻿<div >
-<h2 style="padding-top: 20%">APP X Login</h2>
+﻿<div>
+<h2>AppX Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <table >
         <tr>
             <td>
-                <label for="username" style="width: 100px;;height: 30px;">Employee Id</label>  
+                <label for="username" style="width: 120px;height: 30px;">Employee Id</label>  
             </td>
             <td>
                 <input type="text" formControlName="username" style="width: 150px;height: 30px;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
             </td>
             <td>
                 <div *ngIf="submitted && f.username.errors" >
-                   <div *ngIf="f.username.errors.required" style="width: 200px;height: 30px; color: crimson; font-size: 70%"> Username is required</div>
-                   <div *ngIf="f.username.errors.pattern" style="width: 200px;height: 30px; color: crimson; font-size: 70%">Invalid Employee Id</div>
+                   <div *ngIf="f.username.errors.required" style="width: 150px;height: 30px; color: crimson; font-size: 70%"> Username is required</div>
+                   <div *ngIf="f.username.errors.pattern" style="width: 150px;height: 30px; color: crimson; font-size: 70%">Invalid Employee Id</div>
                 </div>
             </td>
         </tr>
         <tr>
             <td>
-                <label for="password" style="width: 100px;;height: 30px;">Password</label>
+                <label for="password">Password</label>
             </td>
             <td>
                 <input type="password" formControlName="password" style="width: 150px;height: 30px;" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
             </td>
             <td>
                 <div *ngIf="submitted && f.password.errors" >
-                    <div *ngIf="f.password.errors.required" style="width: 200px;height: 30px; color: crimson; font-size: 70%">Password is required</div>
+                    <div *ngIf="f.password.errors.required" style="width: 150px;height: 30px; color: crimson; font-size: 70%">Password is required</div>
                 </div>
             </td>
         </tr>
@@ -33,19 +33,18 @@
             <td>
             </td>
             <td style="padding-top: 5%">
-                <button [disabled]="loading" class="btn btn-primary">Login</button>
-                <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+                <button [disabled]="loading" class="btn btn-primary" style="font-size: 14px">Login</button>
+                <a [routerLink]="['/register']" class="btn btn-link" style="font-size: 14px">Temp</a>
+                <!-- <a [routerLink]="['/forgot']" class="btn btn-link" style="font-size: 13px">Register/Forgot Password</a>     -->
+            
             </td>
-            <td>       
-            </td>
+           
         </tr>
         <tr>
             <td>
             </td>
-            <td>
-                <a [routerLink]="['/forgot']" class="btn btn-link">Forgot Password</a>
-            </td>
-            <td>       
+            <td>  
+                <a [routerLink]="['/forgot']" class="btn btn-link" style="width: 100px;height: 30px;font-size: 14px;">Register/Forgot Password</a>     
             </td>
         </tr>
     </table> 

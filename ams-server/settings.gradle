@@ -1,1 +1,4 @@
 rootProject.name = 'ams-server'
+
+include 'login-service'
+include 'attendance-service'

@@ -27,7 +27,7 @@ public class AttendanceController {
 		
 		String firstName = "firstname";
 		String lastName = "lastname";
-		String emailId = "name@mphasis.com";
+		String emailId = id+"name@mphasis.com";
 		String password = "password";
 		
 		return "Added User: "+loginService.addEmployee(id, firstName, lastName, emailId, password);

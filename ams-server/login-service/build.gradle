@@ -12,21 +12,27 @@ apply plugin: 'eclipse'
 group = 'com.mphasis.appx'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories { mavenCentral() }
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-cassandra')
-	compile('org.springframework.boot:spring-boot-starter-web')	
+	compile('org.springframework.boot:spring-boot-starter-web')
 	
+	//Java Email Service
+	//compile('javax.mail:mail:1.5.0-b01')
+	
+	// Apache Commons Libraries
+	//compile('org.apache.commons:commons-lang3:3.8')	
+		
 	//Swagger API Documentation and UI.
 	compile('io.springfox:springfox-swagger2:2.9.2')	
 	compile('io.springfox:springfox-swagger-ui:2.9.2')	
 	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	
-	
+
 }
 
 dependencyManagement {

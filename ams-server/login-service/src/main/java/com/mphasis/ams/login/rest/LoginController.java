@@ -13,38 +13,39 @@ import com.mphasis.ams.login.service.LoginService;
 
 @RestController
 public class LoginController {
-	
+
 	@Autowired
 	LoginService loginService;
-	
+
 	@GetMapping("/")
-	public String get(){
+	public String get() {
 		return loginService.listEmployee();
 	}
-	
+
 	@GetMapping("/add/{id}")
-	public String add(@PathVariable("id") int id){
-		
+	public String add(@PathVariable("id") int id) {
+
 		String role = "admin";
 		String emailId = "name@mphasis.com";
 		String password = "password";
-		
-		return "Added User: "+loginService.addEmployee(id, emailId, role, password);
+
+		return "Added User: " + loginService.addEmployee(id, emailId, role, password);
 	}
-	
+
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable("id") int id){
+	public String delete(@PathVariable("id") int id) {
 		loginService.deleteEmployee(id);
 		return "Deleted User";
 	}
-	
+
 	@PostMapping("/adduser")
-	public String addUser(@RequestBody LoginUser user){
-		return "Added User: "+loginService.addEmployee(user.getEid(), user.getEmailId(), user.getRole(), user.getPassword());
+	public String addUser(@RequestBody LoginUser user) {
+		return "Added User: "
+				+ loginService.addEmployee(user.getEid(), user.getEmailId(), user.getRole(), user.getPassword());
 	}
-	
+
 	@DeleteMapping("/deleteuser")
-	public String deleteuser(int eid){
+	public String deleteuser(int eid) {
 		loginService.deleteEmployee(eid);
 		return "Deleted User";
 	}

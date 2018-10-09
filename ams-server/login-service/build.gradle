@@ -38,3 +38,9 @@ dependencies {
 dependencyManagement {
     imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
 }
+eclipse {
+	classpath {
+		//customizing the classes output directory:
+    defaultOutputDir = file('build-eclipse')
+	}
+}

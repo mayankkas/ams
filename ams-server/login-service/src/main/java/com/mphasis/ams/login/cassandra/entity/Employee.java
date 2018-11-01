@@ -6,16 +6,28 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table
 public class Employee {
 
+	
+
 	@PrimaryKey
 	private int eid;
 
 	private String emailId;
 
-	private String role;
-	
-	private String projectCode;
+	private String role;	
 	
 	private String password;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private int projectCode;
+	
+	private String mphManager;
+	
+	private String location;
+	
+	private int phoneNumber;
 
 	public Employee() {
 	}
@@ -28,11 +40,26 @@ public class Employee {
 	 * @param role
 	 * @param projectCode
 	 */
-	public Employee(int eid, String emailId, String role, String projectCode) {
+	public Employee(int eid, String emailId, String role, String password) {
 		this.eid = eid;
 		this.emailId = emailId;
 		this.role = role;
 		this.projectCode = projectCode;
+	}
+	
+	public Employee(int eid, String emailId, String role, String password, String firstName, String lastName,
+			int projectCode, String mphManager, String location, int phoneNumber) {
+		super();
+		this.eid = eid;
+		this.emailId = emailId;
+		this.role = role;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.projectCode = projectCode;
+		this.mphManager = mphManager;
+		this.location = location;
+		this.phoneNumber = phoneNumber;
 	}
 	
 	/**
@@ -110,15 +137,85 @@ public class Employee {
 	/**
 	 * @return the projectCode
 	 */
-	public String getProjectCode() {
+	public int getProjectCode() {
 		return projectCode;
 	}
 
 	/**
 	 * @param projectCode the projectCode to set
 	 */
-	public void setProjectCode(String projectCode) {
+	public void setProjectCode(int projectCode) {
 		this.projectCode = projectCode;
+	}
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the mphManager
+	 */
+	public String getMphManager() {
+		return mphManager;
+	}
+
+	/**
+	 * @param mphManager the mphManager to set
+	 */
+	public void setMphManager(String mphManager) {
+		this.mphManager = mphManager;
+	}
+
+	/**
+	 * @return the location
+	 */
+	public String getLocation() {
+		return location;
+	}
+
+	/**
+	 * @param location the location to set
+	 */
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	/**
+	 * @return the phoneNumber
+	 */
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	/**
+	 * @param phoneNumber the phoneNumber to set
+	 */
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="4262fb25-9373-45c5-b25f-76b256b4f899" activeEnvironment="Default" name="AMS REST Project" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="117804d6-9b74-4487-b9ed-b1b84f9f4d5a" wadlVersion="http://wadl.dev.java.net/2009/02" name="" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints/><con:resource name="AMS" path="/employee/register" id="7c6b04bf-7a1f-4441-bfd9-1396c80b4569"><con:settings/><con:parameters/><con:method name="Employee_Module_AMS" id="e10a9735-1300-4301-9d23-53a07a2b15aa" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>400 500 404</con:status><con:params/><con:element xmlns:reg="http://localhost/employee/register">reg:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:reg="http://localhost/employee/register">reg:Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Register Employee" id="e4007ce8-014f-4e74-b368-a9442da0f662" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8090</con:endpoint><con:request>{
+"eid":2286994,
+"emailid":"rakesh.vavadiya@Mphasis.com",
+"role":"Software Enginner",
+"password":"",
+ "firstname":"Rakesh",
+ "lastname":"Vavadiya",
+ "location":"Wilmington",
+ "mphmanager":"Narendra Bhati",
+ "phonenumber":2012387123,
+ "projectcode":72615
+}</con:request><con:originalUri>http://localhost/employee/register</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="Admin_Module_AMS" path="/admin/addemployees" id="7c6b04bf-7a1f-4441-bfd9-1396c80b4569"><con:settings/><con:parameters/><con:method name="AMS 1" id="e10a9735-1300-4301-9d23-53a07a2b15aa" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>400 500 404</con:status><con:params/><con:element xmlns:reg="http://localhost/employee/register">reg:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:reg="http://localhost/employee/register">reg:Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Admin Add Employee" id="227c9649-042c-48ad-8aab-0917c5471790" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8090</con:endpoint><con:request>{
+	"employees":
+	[
+		{
+		"eid":2286994,
+		"emailid":"rakesh.vavadiya@Mphasis.com",
+		"role":"Software Enginner",
+		"password":"",
+		 "firstname":"Rakesh",
+		 "lastname":"Vavadiya",
+		 "location":"Wilmington",
+		 "mphmanager":"Narendra Bhati",
+		 "phonenumber":2012387123,
+		 "projectcode":72615
+		}
+		,
+
+		{
+		"eid":2286995,
+		"emailid":"rakesh.vavadiya@Mphasis.com",
+		"role":"Software Enginner",
+		"password":"",
+		 "firstname":"Rakesh1",
+		 "lastname":"Vavadiya",
+		 "location":"Wilmington",
+		 "mphmanager":"Narendra Bhati",
+		 "phonenumber":2012387123,
+		 "projectcode":72615
+		}
+		,
+
+		{
+		"eid":2286996,
+		"emailid":"rakesh.vavadiya@Mphasis.com",
+		"role":"Software Enginner",
+		"password":"",
+		 "firstname":"Rakesh2",
+		 "lastname":"Vavadiya",
+		 "location":"Wilmington",
+		 "mphmanager":"Narendra Bhati",
+		 "phonenumber":2012387123,
+		 "projectcode":72615
+		}
+
+		,
+
+		{
+		"eid":2286997,
+		"emailid":"rakesh.vavadiya@Mphasis.com",
+		"role":"Software Enginner",
+		"password":"",
+		 "firstname":"Rakesh3",
+		 "lastname":"Vavadiya",
+		 "location":"Wilmington",
+		 "mphmanager":"Narendra Bhati",
+		 "phonenumber":2012387123,
+		 "projectcode":72615
+		}		
+		
+	]	
+}</con:request><con:originalUri>http://localhost/admin/addemployees</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

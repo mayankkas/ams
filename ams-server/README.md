@@ -26,6 +26,10 @@ CREATE KEYSPACE amskeyspace WITH REPLICATION = { 'class' : 'SimpleStrategy', 're
 
 CREATE TABLE amskeyspace.employee (eid varint PRIMARY KEY, emailid text, role text, password text);
 
+# Add more column in employee table
+
+CREATE TABLE amskeyspace.employee (eid int PRIMARY KEY, emailid text, role text, password text, firstname text, lastname text, phonenumber int, mphmanager text, location text, projectcode int);
+
 CREATE INDEX emailidindex ON amskeyspace.employee (emailid);
 
 CREATE INDEX roleindex ON amskeyspace.employee (role);

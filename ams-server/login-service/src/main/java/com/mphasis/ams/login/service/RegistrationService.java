@@ -2,7 +2,7 @@ package com.mphasis.ams.login.service;
 
 import java.util.List;
 
-import com.mphasis.ams.login.cassandra.entity.Employee;
+import com.mphasis.ams.login.dynamo.entity.Employee;
 
 public interface RegistrationService {
 

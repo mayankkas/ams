@@ -14,14 +14,22 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-repositories { mavenCentral() }
+repositories { mavenCentral() 
+	 maven { url "http://repo.opensourceagility.com/release/" }
+}
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-data-cassandra')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	
-	//Java Email Service
+ implementation('org.springframework.boot:spring-boot-starter-web')
+ 
+
+    compile group: 'com.github.derjust', name: 'spring-data-dynamodb', version: '5.0.4'
+	compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+   // compile 'com.amazonaws:aws-java-sdk-dynamodb:1.10.8'
+    // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk
+compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.409'
+    
+    //compile 'org.socialsignin:spring-data-dynamodb:1.0.2.RELEASE'
+    //Java Email Service
 	compile('javax.mail:mail:1.5.0-b01')
 	
 	// Apache Commons Libraries
@@ -31,8 +39,8 @@ dependencies {
 	compile('io.springfox:springfox-swagger2:2.9.2')	
 	compile('io.springfox:springfox-swagger-ui:2.9.2')	
 	
-	testCompile('org.springframework.boot:spring-boot-starter-test')
 
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }
 
 dependencyManagement {

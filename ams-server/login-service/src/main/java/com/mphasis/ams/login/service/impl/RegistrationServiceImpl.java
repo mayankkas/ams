@@ -11,8 +11,9 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mphasis.ams.login.cassandra.EmployeeRepository;
-import com.mphasis.ams.login.cassandra.entity.Employee;
+
+import com.mphasis.ams.login.dynamo.entity.Employee;
+import com.mphasis.ams.login.repository.EmployeeRepository;
 import com.mphasis.ams.login.service.RegistrationService;
 
 /**
@@ -30,7 +31,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 	 */
 	@Override
 	public Integer addEmployees(List<Employee> employees) {		
-		List<Employee> persistedEmployees = empRepo.saveAll(employees);
+		List<Employee> persistedEmployees = (List<Employee>) empRepo.saveAll(employees);
 		// TODO Auto-generated method stub
 		return persistedEmployees.size();
 	}

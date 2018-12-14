@@ -9,17 +9,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mphasis.ams.login.rest.request.LoginUser;
-import com.mphasis.ams.login.service.LoginService;
+import com.mphasis.ams.login.service.impl.LoginServiceImpl;
+
+
 
 @RestController
 public class LoginController {
 
 	@Autowired
-	LoginService loginService;
+	LoginServiceImpl loginServiceImpl;
 
 	@GetMapping("/")
 	public String get() {
-		return loginService.listEmployee();
+		return loginServiceImpl.listEmployee();
 	}
 
 	@GetMapping("/add/{id}")
@@ -29,24 +31,24 @@ public class LoginController {
 		String emailId = "name@mphasis.com";
 		String password = "password";
 
-		return "Added User: " + loginService.addEmployee(id, emailId, role, password);
+		return "Added User: " + loginServiceImpl.addEmployee(id, emailId, role, password);
 	}
 
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") int id) {
-		loginService.deleteEmployee(id);
+		loginServiceImpl.deleteEmployee(id);
 		return "Deleted User";
 	}
 
 	@PostMapping("/adduser")
 	public String addUser(@RequestBody LoginUser user) {
 		return "Added User: "
-				+ loginService.addEmployee(user.getEid(), user.getEmailId(), user.getRole(), user.getPassword());
+				+ loginServiceImpl.addEmployee(user.getEid(), user.getEmailId(), user.getRole(), user.getPassword());
 	}
 
 	@DeleteMapping("/deleteuser")
 	public String deleteuser(int eid) {
-		loginService.deleteEmployee(eid);
+		loginServiceImpl.deleteEmployee(eid);
 		return "Deleted User";
 	}
 }

@@ -9,8 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mphasis.ams.login.cassandra.EmployeeRepository;
-import com.mphasis.ams.login.cassandra.entity.Employee;
-import com.mphasis.ams.login.cassandra.entity.EmployeeWrapper;
+
+
+import com.mphasis.ams.login.dynamo.entity.Employee;
+import com.mphasis.ams.login.dynamo.entity.EmployeeWrapper;
+import com.mphasis.ams.login.repository.EmployeeRepository;
 import com.mphasis.ams.login.rest.controller.RegistrationController;
 import com.mphasis.ams.login.rest.formbean.AddEmployeesFormBean;
 import com.mphasis.ams.login.rest.formbean.PasswordFormBean;

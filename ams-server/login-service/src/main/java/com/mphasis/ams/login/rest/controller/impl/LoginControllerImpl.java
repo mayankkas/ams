@@ -16,12 +16,19 @@ import com.mphasis.ams.login.exception.BusinessException;
 
 import com.mphasis.ams.login.rest.controller.LoginController;
 import com.mphasis.ams.login.service.impl.LoginServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class LoginControllerImpl implements LoginController {
 
 	@Autowired
 	LoginServiceImpl loginServiceImpl;
+	
+	
+	Logger log = LoggerFactory.getLogger(this.getClass());
 	
 
 	@Override

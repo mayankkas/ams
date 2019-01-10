@@ -1,7 +1,10 @@
 package com.mphasis.ams.login.exception;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 
 @Component
 public class BusinessException extends RuntimeException {

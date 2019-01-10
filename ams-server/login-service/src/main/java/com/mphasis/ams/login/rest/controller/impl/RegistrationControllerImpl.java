@@ -3,9 +3,12 @@
  */
 package com.mphasis.ams.login.rest.controller.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,7 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mphasis.ams.login.dynamo.entity.Employee;
 import com.mphasis.ams.login.dynamo.entity.EmployeeWrapper;
+import com.mphasis.ams.login.email.SendEmail;
 import com.mphasis.ams.login.repository.EmployeeRepository;
+import com.mphasis.ams.login.repository.VerificationCodeRepository;
 import com.mphasis.ams.login.rest.controller.RegistrationController;
 import com.mphasis.ams.login.rest.formbean.AddEmployeesFormBean;
 import com.mphasis.ams.login.rest.formbean.PasswordFormBean;
@@ -43,6 +48,12 @@ public class RegistrationControllerImpl implements RegistrationController
 	
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private VerificationCodeRepository verificationRepository;
+	
+	@Autowired
+	private SendEmail sendEmail;
 	
 
 	/* (non-Javadoc)
@@ -87,13 +98,21 @@ public class RegistrationControllerImpl implements RegistrationController
 	/* (non-Javadoc)
 	 * @see com.mphasis.ams.login.rest.controller.RegistrationController#verifyEmployee(com.mphasis.ams.login.rest.formbean.VerificationFormBean, org.springframework.validation.BindingResult, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
+	//sending email with code to user for verification
+	//retrieving code that was generated and was sent to user 
+	//storing code in database for matching the code the user will further enter for verification 
 	@Override
 	@PostMapping("/verification")
-	public BaseResponse verifyEmployee(VerificationFormBean formBean, BindingResult bindingResult,
-			HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+	public String verifyEmployee(VerificationFormBean formBean, BindingResult bindingResult,
+			HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			sendEmail.setTo(formBean.getEmailId());
+			System.out.println(sendEmail.getTo());
+			sendEmail.sendMail();
+			formBean.setCode(sendEmail.getCode());
+			verificationRepository.save(formBean);
+		return "Message sent successfully";
 	}
+	
 
 	/* (non-Javadoc)
 	 * @see com.mphasis.ams.login.rest.controller.RegistrationController#createPassword(com.mphasis.ams.login.rest.formbean.PasswordFormBean, org.springframework.validation.BindingResult, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)

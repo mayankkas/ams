@@ -7,7 +7,10 @@ import javax.sql.rowset.serial.SerialException;
 import com.mphasis.ams.login.dynamo.entity.Employee;
 import com.mphasis.ams.login.exception.ServiceException;
 import com.mphasis.ams.login.rest.formbean.EmployeeHoursBean;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 public interface ReportService {
 
 	List<Employee> getReport(int projectId) throws ServiceException;

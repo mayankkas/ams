@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.mphasis.ams.login.rest.formbean.EmployeeHoursBean;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 public interface HoursService {
 
 	int calculateTotalHours(double overtime, double leaves, int forloughdays);

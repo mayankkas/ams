@@ -9,20 +9,17 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.mphasis.ams.login.dynamo.entity.Employee;
 
+/**
+ * @author Hamza.Khan
+ *
+ */
 @EnableScan
-public interface EmployeeRepository extends DynamoDBCrudRepository<Employee, Integer>
-{
-//	Employee findByEid(BigInteger eid);
+public interface EmployeeRepository extends DynamoDBCrudRepository<Employee, Integer> {
 
-//	@Query("Select * from customer where firstname=?0")
-//	List<Employee> findByFirstName(String firstName);
-//
-//	@Query("Select * from customer where lastname=?0")
-//	List<Employee> findByLastName(String lastName);
-	
 	List<Employee> findByProjectCode(int projectCode);
+
 	Employee findByPassword(String password);
+
 	Employee findByEid(int eid);
-	
 
 }

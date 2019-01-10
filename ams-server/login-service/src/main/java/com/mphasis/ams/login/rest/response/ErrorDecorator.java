@@ -1,5 +1,8 @@
 package com.mphasis.ams.login.rest.response;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 public class ErrorDecorator {
 
 	public ErrorDecorator(String errorCode, String errorFieldName, String errorDescription) {

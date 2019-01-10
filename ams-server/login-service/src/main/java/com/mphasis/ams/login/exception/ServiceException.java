@@ -1,5 +1,8 @@
 package com.mphasis.ams.login.exception;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 public class ServiceException extends BusinessException {
 
 	public ServiceException()

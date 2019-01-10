@@ -23,7 +23,10 @@ import com.mphasis.ams.login.rest.formbean.EmployeeHoursBean;
 import com.mphasis.ams.login.rest.response.ErrorDecorator;
 import com.mphasis.ams.login.rest.response.ErrorResponse;
 import com.mphasis.ams.login.service.impl.HoursServiceImpl;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 @RestController
 public class HoursControllerImpl implements HoursController {
 
@@ -34,33 +37,49 @@ public class HoursControllerImpl implements HoursController {
 
 	// add billed hours of employee
 	@Override
-	@PostMapping("/addhours")
-	public ResponseEntity<EmployeeHoursBean> addHours(@RequestBody EmployeeHoursBean homeFormBean,BindingResult bindingResult,
-			HttpServletRequest request, HttpServletResponse response) {
+	@PostMapping("/hours/addhours")
+	public ResponseEntity<EmployeeHoursBean> addHours(@RequestBody EmployeeHoursBean homeFormBean,
+			BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) {
 
-		if(bindingResult.hasErrors())
-		{
-			System.out.println("hi iam in binding");
+		if (bindingResult.hasErrors()) {
+
 			baseController.buildValidationErrorResponse(bindingResult, response);
 		}
 		hourServiceImpl.addHours(homeFormBean, request, response);
 		return new ResponseEntity<EmployeeHoursBean>(homeFormBean, HttpStatus.OK);
 	}
 
-	// total billed hours auto-populated negating weekends and public holidays
+	//Get total billed hours auto-populated negating weekends and public holidays
 	@Override
-	@GetMapping("/getTotalHours")
+	@GetMapping("/hours/getTotalHours")
 
 	public int getTotalHours() {
 		return hourServiceImpl.calculateTotalHours(0, 0, 0);
 	}
 
-	/*@Override
-	@GetMapping("/hour/{month}")
-	public List<EmployeeHoursBean> MonthlyHours(@PathVariable String month,HttpServletRequest request, HttpServletResponse response) {
-		
-		return hourServiceImpl.getMonthlyHours(month, request, response);
-	
-	}*/
+	//update hours of employee
+	@Override
+	@PostMapping("/hours/update")
+	public ResponseEntity<EmployeeHoursBean> updateHours(EmployeeHoursBean hours, BindingResult bindingResult,
+			HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		if (bindingResult.hasErrors()) {
+			baseController.buildValidationErrorResponse(bindingResult, response);
+		}
+		hourServiceImpl.addHours(hours, request, response);
+		return new ResponseEntity<EmployeeHoursBean>(hours, HttpStatus.OK);
+	}
+
+	/*
+	 * @Override
+	 * 
+	 * @GetMapping("/hour/{month}") public List<EmployeeHoursBean>
+	 * MonthlyHours(@PathVariable String month,HttpServletRequest request,
+	 * HttpServletResponse response) {
+	 * 
+	 * return hourServiceImpl.getMonthlyHours(month, request, response);
+	 * 
+	 * }
+	 */
 
 }

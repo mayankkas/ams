@@ -9,4 +9,5 @@ package com.mphasis.ams.login.rest.response;
  */
 public class BaseResponse {
 
+	
 }

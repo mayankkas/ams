@@ -11,7 +11,10 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mphasis.ams.login.exception.BusinessException;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 @Component
 public class LoggerInterceptor implements HandlerInterceptor {
 
@@ -37,7 +40,9 @@ public class LoggerInterceptor implements HandlerInterceptor {
 		log.info("Before Handler execution");
 		if(StringUtils.isEmpty(request.getHeader("client-id")))
 		{
-			throw new BusinessException(HttpStatus.PRECONDITION_FAILED.value(),"Invalid request");
+			//throw new BusinessException(HttpStatus.PRECONDITION_FAILED.value(),"Invalid request");
+			
+			
 		}
 		return true;
 	}

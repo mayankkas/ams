@@ -11,10 +11,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.mphasis.ams.login.rest.formbean.EmployeeHoursBean;
 
+/**
+ * @author Hamza.Khan
+ *
+ */
 public interface HoursController {
 
-	ResponseEntity<EmployeeHoursBean> addHours(@RequestBody EmployeeHoursBean homeFormBean,BindingResult bindingResult,HttpServletRequest request, HttpServletResponse response);
+	ResponseEntity<EmployeeHoursBean> addHours(@RequestBody EmployeeHoursBean homeFormBean, BindingResult bindingResult,
+			HttpServletRequest request, HttpServletResponse response);
+
 	int getTotalHours();
-	//List<EmployeeHoursBean> MonthlyHours(String month,HttpServletRequest request, HttpServletResponse response);
-	
+
+	ResponseEntity<EmployeeHoursBean> updateHours(@RequestBody EmployeeHoursBean homeFormBean,
+			BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response);
+
+	// List<EmployeeHoursBean> MonthlyHours(String month,HttpServletRequest request,
+	// HttpServletResponse response);
+
 }

@@ -10,7 +10,10 @@ import org.springframework.validation.BindingResult;
 
 import com.mphasis.ams.login.rest.response.ErrorDecorator;
 import com.mphasis.ams.login.rest.response.ErrorResponse;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 @Component
 public class BaseController {
 

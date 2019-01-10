@@ -1,7 +1,10 @@
 package com.mphasis.ams.login.rest.response;
 
 import java.util.List;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 public class ErrorResponse {
 
 	public ErrorResponse(List<ErrorDecorator> errors) {

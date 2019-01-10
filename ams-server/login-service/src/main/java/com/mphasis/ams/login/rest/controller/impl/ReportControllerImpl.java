@@ -12,12 +12,17 @@ import com.mphasis.ams.login.rest.controller.ReportController;
 import com.mphasis.ams.login.rest.formbean.EmployeeHoursBean;
 import com.mphasis.ams.login.service.ReportService;
 import com.mphasis.ams.login.service.impl.ReportServiceImpl;
-
+/**
+ * @author Hamza.Khan
+ *
+ */
 @RestController
 public class ReportControllerImpl implements ReportController {
 
 	@Autowired
 	ReportServiceImpl reportServiceImpl;
+	
+	//get reports according to project id entered by user
 	@Override
 	@GetMapping("/report/{projectCode}")
 	public List<Employee> getReport(@PathVariable int projectCode) {
@@ -25,11 +30,13 @@ public class ReportControllerImpl implements ReportController {
 		return list;
 	}
 
+	//get reports according to the month entered by user
 	@Override
 	@GetMapping("/MonthlyReports/{month}")
 	public List<EmployeeHoursBean> MonthlyReport(@PathVariable String month) {
 		List<EmployeeHoursBean> list=reportServiceImpl.getReportMonthly(month);
 		return list;
 	}
+	
 
 }
